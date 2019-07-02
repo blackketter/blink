@@ -1,4 +1,4 @@
-#PlatformIO Arduino Blink
+# PlatformIO Arduino Blink
 
 Blink Example For Arduino which builds using PlatformIO and runs on a variety of boards.
 
