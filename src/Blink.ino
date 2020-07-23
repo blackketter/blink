@@ -8,22 +8,29 @@
   // leonardo pro micro has Rx LED on pin 17
   #define LED (17)
   #define LEDON (LOW)
-#elif defined(ARDUINO_ESP32_DEV)
+  #define LEDOFF (HIGH)
+#elif defined(ARDUINO_ESP32_DEV) || defined(ARDUINO_ESP32_THING)
   #define LED (5)
   #define LEDON (HIGH)
+  #define LEDOFF (LOW)
 #elif defined(ARDUINO_LOLIN32)
   #define LED (22)
   #define LEDON (HIGH)
+  #define LEDOFF (LOW)
 #elif defined(ESP8266_WEMOS_D1MINI)
   #define LED (2)
   #define LEDON (LOW)
+  #define LEDOFF (HIGH)
 #else
-  // Pin 13 has an LED connected on most Arduino boards:
-  #define LED (13)
+  #if defined(LED_BUILTIN)
+    #define LED (LED_BUILTIN)
+  #else
+    // Pin 13 has an LED connected on most Arduino boards:
+    #define LED (13)
+  #endif
   #define LEDON (LOW)
+  #define LEDOFF (HIGH)
 #endif
-
-#define LEDOFF (!LEDON)
 
 void setup() {
   // initialize the digital pin as an output.
